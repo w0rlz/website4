@@ -1,48 +1,64 @@
+# Global Media Settings
 media:
-  - name: default
-    input: images
-    output: images
+  - name: baseball_media
+    input: images/baseball
+    output: images/baseball
+  - name: aviation_media
+    input: images/aviation
+    output: images/aviation
+  - name: misc_media
+    input: images/misc
+    output: images/misc
 
+# Content Collections
 content:
   - name: Baseball Photos
+    label: Baseball Gallery
     type: collection
     path: images/baseball
-    media_folder: /images/baseball  # <--- Add this
-    public_folder: /images/baseball # <--- Add this so the site can find it
+    extension: md
+    format: yaml-frontmatter
     fields:
       - name: photo
         label: Upload Photo
         type: image
+        media: baseball_media
       - name: date
         label: Date Taken
         type: date
       - name: caption
         label: What is this about?
         type: string
+
   - name: Aviation Photos
+    label: Aviation Gallery
     type: collection
     path: images/aviation
-    media_folder: /images/aviation  # <--- Add this
-    public_folder: /images/aviation # <--- Add this so the site can find it
+    extension: md
+    format: yaml-frontmatter
     fields:
       - name: photo
         label: Upload Photo
         type: image
+        media: aviation_media
       - name: date
         label: Date Taken
         type: date
       - name: caption
         label: What is this about?
         type: string
+
   - name: Misc Photos
+    label: Misc Gallery
     type: collection
     path: images/misc
-    media_folder: /images/misc  # <--- Add this
-    public_folder: /images/misc # <--- Add this so the site can find it
+    extension: md
+    format: yaml-frontmatter
     fields:
       - name: photo
         label: Upload Photo
         type: image
+        media: misc_media
       - name: date
         label: Date Taken
         type: date
