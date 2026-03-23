@@ -1,3 +1,6 @@
+media:
+  path: images
+
 content:
   - name: Baseball Photos
     type: collection
