@@ -1,111 +1,135 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Plus+Jakarta+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow:ital,wght@0,600;1,800&display=swap');
 
 :root {
     --bg: #ffffff;
-    --card-bg: #f9f9fb;
-    --accent-1: #2563eb; /* Electric Blue */
-    --accent-2: #f97316; /* Vibrant Orange */
-    --text: #1a1a1a;
-    --border: #e2e8f0;
+    --accent-blue: #0055ff;
+    --accent-yellow: #fff200;
+    --text: #000000;
+    --light-grey: #f4f4f4;
 }
 
 body { 
-    font-family: 'Plus Jakarta Sans', sans-serif; 
+    font-family: 'Barlow', sans-serif; 
     margin: 0; 
     background-color: var(--bg); 
     color: var(--text);
+    overflow-x: hidden;
 }
 
-/* Fun, Bright Navigation */
+/* 1. SCROLLING TICKER */
+.ticker-wrap {
+    background: var(--text);
+    color: var(--accent-yellow);
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.ticker {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+    font-family: 'Archivo Black', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* 2. POWER NAVIGATION */
 nav {
-    padding: 25px;
     display: flex;
-    justify-content: center;
-    gap: 30px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    border-bottom: 5px solid var(--text);
+    position: sticky;
+    top: 0;
     background: white;
-    border-bottom: 2px solid var(--text); /* Chunky handmade look */
+    z-index: 1000;
 }
-
 nav a {
-    color: var(--text);
     text-decoration: none;
-    font-weight: 700;
-    font-size: 0.9rem;
+    color: var(--text);
+    font-weight: 800;
+    font-style: italic;
     text-transform: uppercase;
     transition: 0.2s;
 }
+nav a:hover { color: var(--accent-blue); transform: skewX(-10deg); }
 
-nav a:hover { color: var(--accent-1); border-bottom: 3px solid var(--accent-2); }
-
-/* The Hero: Fun & Explosive */
+/* 3. HERO SECTION */
 .hero {
-    padding: 120px 20px;
+    padding: 100px 20px;
     text-align: center;
-    background: linear-gradient(135deg, #f0f9ff 0%, #fff7ed 100%);
-    border-bottom: 2px solid var(--text);
+    background: linear-gradient(to bottom, #fff, var(--light-grey));
 }
-
 .hero h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(4rem, 15vw, 10rem);
-    margin: 0;
-    color: var(--text);
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(4rem, 15vw, 12rem);
     line-height: 0.8;
-    letter-spacing: -4px;
+    margin: 0;
+    text-transform: uppercase;
+    font-style: italic;
+    -webkit-text-stroke: 3px var(--text);
+    color: transparent;
 }
+.hero h1 span { color: var(--text); -webkit-text-stroke: 0px; }
 
-.hero span { color: var(--accent-1); }
-
-/* Sections */
-.section { max-width: 1300px; margin: 60px auto; padding: 0 20px; }
-
-.section-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 2rem;
-    margin-bottom: 30px;
-    display: inline-block;
-    background: var(--accent-2);
+/* 4. EQUIPMENT & STATS SECTION */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    background: var(--accent-blue);
+    padding: 40px;
     color: white;
-    padding: 5px 15px;
-    transform: rotate(-1deg); /* Handmade "sticker" feel */
+    text-align: center;
 }
+.stat-item h2 { font-size: 3rem; margin: 0; font-family: 'Archivo Black'; }
 
-/* The Gallery Grid */
-.gallery { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
-    gap: 40px; 
+/* 5. GALLERY CARDS */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    padding: 50px;
 }
-
-/* Card Style: Modern & Clean */
 .photo-card {
-    background: var(--card-bg);
-    border: 2px solid var(--text);
-    border-radius: 0px; /* Sharp corners look more "custom/handmade" */
-    box-shadow: 8px 8px 0px var(--text); /* Retro pop shadow */
-    transition: 0.3s;
+    position: relative;
+    border: 4px solid var(--text);
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
 }
-
 .photo-card:hover {
-    transform: translate(-4px, -4px);
-    box-shadow: 12px 12px 0px var(--accent-1);
+    transform: scale(1.03) rotate(-1deg);
+    box-shadow: 15px 15px 0px var(--accent-yellow);
 }
-
 .photo-card img {
     width: 100%;
-    aspect-ratio: 4/5;
+    aspect-ratio: 1/1;
     object-fit: cover;
-    border-bottom: 2px solid var(--text);
+    display: block;
+    transition: 0.5s;
+}
+.photo-card:hover img { filter: contrast(1.2) saturate(1.2); }
+
+/* CORNER BADGE */
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--accent-yellow);
+    color: black;
+    padding: 5px 15px;
+    font-weight: 900;
+    font-style: italic;
+    border: 2px solid black;
+    z-index: 10;
 }
 
-.photo-info { padding: 20px; }
-.photo-info strong { 
-    color: var(--accent-1); 
-    font-size: 0.8rem; 
-    display: block; 
-    margin-bottom: 5px; 
+.photo-info {
+    padding: 15px;
+    background: white;
+    border-top: 4px solid var(--text);
 }
-
-.photo-info p { margin: 0; font-weight: 600; font-size: 1.2rem; }
-
-footer { padding: 40px; text-align: center; font-weight: 700; color: var(--text); }
