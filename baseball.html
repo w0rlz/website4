@@ -3,50 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visuals | Portfolio</title>
+    <title>BASEBALL | W0RLZ</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>The Collection</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="baseball.html">Baseball</a>
-            <a href="aviation.html">Aviation</a>
-            <a href="misc.html">Misc</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
-
-    <div class="container">
-        <div id="gallery" class="gallery">
-            </div>
+    <div class="ticker-wrap">
+        <div class="ticker">
+            LATEST UPLOADS // BASEBALL 2026 // DIAMOND ACTION // FULL COUNT // LATEST UPLOADS // BASEBALL 2026 //
+        </div>
     </div>
+
+    <nav>
+        <div style="font-family:'Archivo Black'; font-size: 1.8rem;">W0RLZ</div>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="baseball.html" style="margin-left:30px; color: var(--accent-blue);">Baseball</a>
+            <a href="aviation.html" style="margin-left:30px">Aviation</a>
+            <a href="misc.html" style="margin-left:30px">Misc</a>
+            <a href="contact.html" style="margin-left:30px">Contact</a>
+        </div>
+    </nav>
+
+    <div class="hero" style="padding: 80px 20px;">
+        <h2 class="section-title">THE DIAMOND</h2>
+        <h1>BASE<span>BALL</span></h1>
+    </div>
+
+    <div id="gallery" class="gallery">
+        </div>
 
     <script>
         const username = 'w0rlz'; 
         const repo = 'website4';
-        const folder = 'baseball'; // Change this per page
+        const folder = 'baseball'; 
 
         async function loadGallery() {
             const gallery = document.getElementById('gallery');
             try {
                 const response = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/images/${folder}`);
                 const files = await response.json();
-
                 const images = files.filter(f => f.name.match(/\.(jpg|jpeg|png|webp|JPG)$/i));
                 const dataFiles = files.filter(f => f.name.endsWith('.md'));
 
                 for (const imgFile of images) {
-                    const card = document.createElement('div');
-                    card.className = 'photo-card';
-
-                    // Find matching metadata
                     const baseName = imgFile.name.split('.')[0];
                     const match = dataFiles.find(d => d.name.includes(baseName));
-
-                    let date = "RECENT";
-                    let caption = "Untitled Work";
+                    let date = "SEASON 2026", caption = "Game Action";
 
                     if (match) {
                         const infoResp = await fetch(match.download_url);
@@ -55,20 +57,17 @@
                         caption = text.match(/caption: (.*)/)?.[1]?.replace(/"/g, '') || caption;
                     }
 
+                    const card = document.createElement('div');
+                    card.className = 'photo-card';
                     card.innerHTML = `
-                        <img src="${imgFile.download_url}" loading="lazy">
+                        <img src="${imgFile.download_url}" alt="Baseball Action">
                         <div class="photo-info">
                             <strong>${date}</strong>
                             <p>${caption}</p>
-                        </div>
-                    `;
-                    
+                        </div>`;
                     gallery.appendChild(card);
-                    
-                    // Trigger fade-in animation
-                    setTimeout(() => card.classList.add('visible'), 100);
                 }
-            } catch (e) { console.log("Site is updating..."); }
+            } catch (e) { console.log("Syncing gallery..."); }
         }
         loadGallery();
     </script>
