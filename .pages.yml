@@ -1,4 +1,4 @@
-# Global Media Settings
+# 1. Define the separate storage buckets
 media:
   - name: baseball_media
     input: images/baseball
@@ -10,10 +10,9 @@ media:
     input: images/misc
     output: images/misc
 
-# Content Collections
 content:
+  # 2. Baseball Collection
   - name: Baseball Photos
-    label: Baseball Gallery
     type: collection
     path: images/baseball
     extension: md
@@ -22,16 +21,16 @@ content:
       - name: photo
         label: Upload Photo
         type: image
-        media: baseball_media
+        media: baseball_media # <--- FORCES it to images/baseball
       - name: date
         label: Date Taken
         type: date
       - name: caption
-        label: What is this about?
+        label: Caption
         type: string
 
+  # 3. Aviation Collection
   - name: Aviation Photos
-    label: Aviation Gallery
     type: collection
     path: images/aviation
     extension: md
@@ -40,16 +39,16 @@ content:
       - name: photo
         label: Upload Photo
         type: image
-        media: aviation_media
+        media: aviation_media # <--- FORCES it to images/aviation
       - name: date
         label: Date Taken
         type: date
       - name: caption
-        label: What is this about?
+        label: Caption
         type: string
 
+  # 4. Misc Collection
   - name: Misc Photos
-    label: Misc Gallery
     type: collection
     path: images/misc
     extension: md
@@ -58,10 +57,10 @@ content:
       - name: photo
         label: Upload Photo
         type: image
-        media: misc_media
+        media: misc_media # <--- FORCES it to images/misc
       - name: date
         label: Date Taken
         type: date
       - name: caption
-        label: What is this about?
+        label: Caption
         type: string
