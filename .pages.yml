@@ -1,17 +1,20 @@
-# 1. Define the separate storage buckets
+# 1. Media storage definitions
 media:
   - name: baseball_media
+    label: Baseball Photos
     input: images/baseball
     output: images/baseball
   - name: aviation_media
+    label: Aviation Photos
     input: images/aviation
     output: images/aviation
   - name: misc_media
+    label: Misc Photos
     input: images/misc
     output: images/misc
 
+# 2. Collection definitions
 content:
-  # 2. Baseball Collection
   - name: Baseball Photos
     type: collection
     path: images/baseball
@@ -21,7 +24,9 @@ content:
       - name: photo
         label: Upload Photo
         type: image
-        media: baseball_media # <--- FORCES it to images/baseball
+        options:
+          media: baseball_media  # Forces the upload to the baseball folder
+          path: images/baseball  # Opens the file browser in this folder
       - name: date
         label: Date Taken
         type: date
@@ -29,7 +34,6 @@ content:
         label: Caption
         type: string
 
-  # 3. Aviation Collection
   - name: Aviation Photos
     type: collection
     path: images/aviation
@@ -39,7 +43,9 @@ content:
       - name: photo
         label: Upload Photo
         type: image
-        media: aviation_media # <--- FORCES it to images/aviation
+        options:
+          media: aviation_media  # Forces the upload to the aviation folder
+          path: images/aviation  # Opens the file browser in this folder
       - name: date
         label: Date Taken
         type: date
@@ -47,7 +53,6 @@ content:
         label: Caption
         type: string
 
-  # 4. Misc Collection
   - name: Misc Photos
     type: collection
     path: images/misc
@@ -57,7 +62,9 @@ content:
       - name: photo
         label: Upload Photo
         type: image
-        media: misc_media # <--- FORCES it to images/misc
+        options:
+          media: misc_media      # Forces the upload to the misc folder
+          path: images/misc      # Opens the file browser in this folder
       - name: date
         label: Date Taken
         type: date
