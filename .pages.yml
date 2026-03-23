@@ -30,7 +30,7 @@ content:
       - name: caption
         label: What is this about?
         type: string
-    - name: Misc Photos
+  - name: Misc Photos
     type: collection
     path: images/misc
     fields:
