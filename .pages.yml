@@ -1,15 +1,13 @@
 content:
-  - name: Baseball Gallery
+  - name: Baseball Photos
     type: collection
-    path: baseball.html
-    fields:
-      - name: photos
-        type: image
-        list: true
-  - name: Aviation Gallery
+    path: images/baseball/
+    exclude: ["index.html"] # Keeps things tidy
+  - name: Aviation Photos
     type: collection
-    path: aviation.html
-    fields:
-      - name: photos
-        type: image
-        list: true
+    path: images/aviation/
+    exclude: ["index.html"]
+  - name: Misc Photos
+    type: collection
+    path: images/misc/
+    exclude: ["index.html"]
