@@ -17,7 +17,7 @@ content:
       - name: caption
         label: What is this about?
         type: string
-   - name: Aviation Photos
+  - name: Aviation Photos
     type: collection
     path: images/aviation
     fields:
@@ -30,7 +30,7 @@ content:
       - name: caption
         label: What is this about?
         type: string
-   - name: Misc Photos
+    - name: Misc Photos
     type: collection
     path: images/misc
     fields:
