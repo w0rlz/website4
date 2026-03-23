@@ -7,6 +7,8 @@ content:
   - name: Baseball Photos
     type: collection
     path: images/baseball
+    media_folder: /images/baseball  # <--- Add this
+    public_folder: /images/baseball # <--- Add this so the site can find it
     fields:
       - name: photo
         label: Upload Photo
@@ -20,6 +22,8 @@ content:
   - name: Aviation Photos
     type: collection
     path: images/aviation
+    media_folder: /images/aviation  # <--- Add this
+    public_folder: /images/aviation # <--- Add this so the site can find it
     fields:
       - name: photo
         label: Upload Photo
@@ -33,6 +37,8 @@ content:
   - name: Misc Photos
     type: collection
     path: images/misc
+    media_folder: /images/misc  # <--- Add this
+    public_folder: /images/misc # <--- Add this so the site can find it
     fields:
       - name: photo
         label: Upload Photo
