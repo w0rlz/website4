@@ -1,9 +1,22 @@
-media:
+content:
   - name: Baseball Photos
+    type: collection
     path: images/baseball
+    fields:
+      - name: photo
+        label: Upload Photo
+        type: image
   - name: Aviation Photos
+    type: collection
     path: images/aviation
+    fields:
+      - name: photo
+        label: Upload Photo
+        type: image
   - name: Misc Photos
+    type: collection
     path: images/misc
-
-content: [] # This hides that "Create new entry" text box you're seeing
+    fields:
+      - name: photo
+        label: Upload Photo
+        type: image
