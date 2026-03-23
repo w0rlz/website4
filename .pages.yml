@@ -1,6 +1,3 @@
-media:
-  path: images
-
 content:
   - name: Baseball Photos
     type: collection
@@ -9,6 +6,8 @@ content:
       - name: photo
         label: Upload Photo
         type: image
+        options:
+          path: images/baseball
   - name: Aviation Photos
     type: collection
     path: images/aviation
@@ -16,6 +15,8 @@ content:
       - name: photo
         label: Upload Photo
         type: image
+        options:
+          path: images/aviation
   - name: Misc Photos
     type: collection
     path: images/misc
@@ -23,3 +24,5 @@ content:
       - name: photo
         label: Upload Photo
         type: image
+        options:
+          path: images/misc
