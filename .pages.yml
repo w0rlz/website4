@@ -1,28 +1,39 @@
+media:
+  - name: baseball_media
+    label: Baseball Storage
+    input: images/baseball
+    output: images/baseball
+  - name: aviation_media
+    label: Aviation Storage
+    input: images/aviation
+    output: images/aviation
+  - name: misc_media
+    label: Misc Storage
+    input: images/misc
+    output: images/misc
+
 content:
   - name: Baseball Photos
     type: collection
     path: images/baseball
     fields:
       - name: photo
-        label: Upload Photo
+        label: Upload Baseball Photo
         type: image
-        options:
-          path: images/baseball
+        media: baseball_media
   - name: Aviation Photos
     type: collection
     path: images/aviation
     fields:
       - name: photo
-        label: Upload Photo
+        label: Upload Aviation Photo
         type: image
-        options:
-          path: images/aviation
+        media: aviation_media
   - name: Misc Photos
     type: collection
     path: images/misc
     fields:
       - name: photo
-        label: Upload Photo
+        label: Upload Misc Photo
         type: image
-        options:
-          path: images/misc
+        media: misc_media
