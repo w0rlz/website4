@@ -31,7 +31,7 @@
 
     <div id="gallery" class="gallery"></div>
 
-    <script>
+  <script>
         const username = 'w0rlz'; 
         const repo = 'website4';
         const folder = 'aviation'; 
@@ -47,7 +47,7 @@
                 for (const imgFile of images) {
                     const baseName = imgFile.name.split('.')[0];
                     const match = dataFiles.find(d => d.name.includes(baseName));
-                    let date = "FLIGHT LOG", caption = "Aerial Visual";
+                    let date = "SEASON 2026", caption = "AirShows";
 
                     if (match) {
                         const infoResp = await fetch(match.download_url);
@@ -59,7 +59,7 @@
                     const card = document.createElement('div');
                     card.className = 'photo-card';
                     card.innerHTML = `
-                        <img src="${imgFile.download_url}" alt="Aviation Shot">
+                        <img src="${imgFile.download_url}" alt="Aircraft Action">
                         <div class="photo-info">
                             <strong>${date}</strong>
                             <p>${caption}</p>
