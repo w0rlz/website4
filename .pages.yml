@@ -1,3 +1,6 @@
+media:
+  path: images # This tells it the main folder for images
+
 content:
   - name: Baseball Photos
     type: collection
