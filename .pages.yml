@@ -1,16 +1,7 @@
 media:
-  - name: baseball_media
-    label: Baseball Storage
-    input: images/baseball
-    output: images/baseball
-  - name: aviation_media
-    label: Aviation Storage
-    input: images/aviation
-    output: images/aviation
-  - name: misc_media
-    label: Misc Storage
-    input: images/misc
-    output: images/misc
+  - name: default
+    input: images
+    output: images
 
 content:
   - name: Baseball Photos
@@ -18,22 +9,25 @@ content:
     path: images/baseball
     fields:
       - name: photo
-        label: Upload Baseball Photo
+        label: Upload Photo
         type: image
-        media: baseball_media
+      - name: date
+        label: Date Taken
+        type: date
+      - name: caption
+        label: What is this about?
+        type: string
   - name: Aviation Photos
     type: collection
     path: images/aviation
     fields:
       - name: photo
-        label: Upload Aviation Photo
+        label: Upload Photo
         type: image
-        media: aviation_media
   - name: Misc Photos
     type: collection
     path: images/misc
     fields:
       - name: photo
-        label: Upload Misc Photo
+        label: Upload Photo
         type: image
-        media: misc_media
