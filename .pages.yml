@@ -1,13 +1,9 @@
-content:
+media:
   - name: Baseball Photos
-    type: collection
-    path: images/baseball/
-    exclude: ["index.html"] # Keeps things tidy
+    path: images/baseball
   - name: Aviation Photos
-    type: collection
-    path: images/aviation/
-    exclude: ["index.html"]
+    path: images/aviation
   - name: Misc Photos
-    type: collection
-    path: images/misc/
-    exclude: ["index.html"]
+    path: images/misc
+
+content: [] # This hides that "Create new entry" text box you're seeing
