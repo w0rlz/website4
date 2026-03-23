@@ -17,17 +17,29 @@ content:
       - name: caption
         label: What is this about?
         type: string
-  - name: Aviation Photos
+   - name: Aviation Photos
     type: collection
     path: images/aviation
     fields:
       - name: photo
         label: Upload Photo
         type: image
-  - name: Misc Photos
+      - name: date
+        label: Date Taken
+        type: date
+      - name: caption
+        label: What is this about?
+        type: string
+   - name: Misc Photos
     type: collection
     path: images/misc
     fields:
       - name: photo
         label: Upload Photo
         type: image
+      - name: date
+        label: Date Taken
+        type: date
+      - name: caption
+        label: What is this about?
+        type: string
