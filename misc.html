@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Miscellaneous Photos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Misc Collection</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="baseball.html">Baseball</a>
+            <a href="aviation.html">Aviation</a>
+            <a href="misc.html">Misc</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <div class="container">
+        <div id="misc-gallery" class="gallery">
+            </div>
+    </div>
+
+    <script>
+        async function loadMisc() {
+            const repo = 'YOUR_USERNAME/YOUR_REPO_NAME';
+            const response = await fetch(`https://api.github.com/repos/${repo}/contents/images/misc`);
+            const data = await response.json();
+            const gallery = document.getElementById('misc-gallery');
+            
+            data.forEach(file => {
+                if(file.name.match(/\.(jpg|jpeg|png|webp)$/i)) {
+                    const img = document.createElement('img');
+                    img.src = file.download_url;
+                    gallery.appendChild(img);
+                }
+            });
+        }
+        loadMisc();
+    </script>
+</body>
+</html>
