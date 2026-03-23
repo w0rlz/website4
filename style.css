@@ -4,6 +4,7 @@
     --bg: #ffffff;
     --accent-blue: #0055ff;
     --accent-yellow: #fff200;
+    --red: #FF0000; /* Keeping your Red from before */
     --text: #000000;
     --light-grey: #f4f4f4;
 }
@@ -14,15 +15,20 @@ body {
     background-color: var(--bg); 
     color: var(--text);
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Keeps everything centered */
 }
 
 /* 1. SCROLLING TICKER */
 .ticker-wrap {
+    width: 100%;
     background: var(--text);
     color: var(--accent-yellow);
     padding: 10px 0;
     overflow: hidden;
     white-space: nowrap;
+    border-bottom: 5px solid var(--red);
 }
 .ticker {
     display: inline-block;
@@ -32,8 +38,9 @@ body {
     font-size: 1.2rem;
 }
 @keyframes marquee {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+    /* Fixed to 0% to -50% for smoother looping */
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
 }
 
 /* 2. POWER NAVIGATION */
@@ -41,6 +48,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
     padding: 20px 50px;
     border-bottom: 5px solid var(--text);
     position: sticky;
@@ -55,14 +63,17 @@ nav a {
     font-style: italic;
     text-transform: uppercase;
     transition: 0.2s;
+    margin-left: 20px;
 }
 nav a:hover { color: var(--accent-blue); transform: skewX(-10deg); }
 
 /* 3. HERO SECTION */
 .hero {
+    width: 100%;
     padding: 100px 20px;
     text-align: center;
     background: linear-gradient(to bottom, #fff, var(--light-grey));
+    border-bottom: 8px solid var(--text);
 }
 .hero h1 {
     font-family: 'Archivo Black', sans-serif;
@@ -78,32 +89,45 @@ nav a:hover { color: var(--accent-blue); transform: skewX(-10deg); }
 
 /* 4. EQUIPMENT & STATS SECTION */
 .stats-grid {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    gap: 0; /* Changed to 0 to keep the "stacked" look */
     background: var(--accent-blue);
-    padding: 40px;
+    border-bottom: 8px solid var(--text);
     color: white;
     text-align: center;
 }
-.stat-item h2 { font-size: 3rem; margin: 0; font-family: 'Archivo Black'; }
+.stat-item {
+    padding: 40px;
+    border-right: 4px solid var(--text);
+}
+.stat-item:last-child { border-right: none; }
+.stat-item h2 { font-size: 4rem; margin: 0; font-family: 'Archivo Black'; }
 
-/* 5. GALLERY CARDS */
+/* 5. GALLERY CARDS (Centered Container) */
+.gallery-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 50px 20px;
+}
+
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 30px;
-    padding: 50px;
 }
 .photo-card {
     position: relative;
     border: 4px solid var(--text);
     transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     overflow: hidden;
+    background: white;
 }
 .photo-card:hover {
     transform: scale(1.03) rotate(-1deg);
     box-shadow: 15px 15px 0px var(--accent-yellow);
+    z-index: 5;
 }
 .photo-card img {
     width: 100%;
@@ -117,8 +141,8 @@ nav a:hover { color: var(--accent-blue); transform: skewX(-10deg); }
 /* CORNER BADGE */
 .badge {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 15px;
+    left: 15px;
     background: var(--accent-yellow);
     color: black;
     padding: 5px 15px;
@@ -132,4 +156,16 @@ nav a:hover { color: var(--accent-blue); transform: skewX(-10deg); }
     padding: 15px;
     background: white;
     border-top: 4px solid var(--text);
+    text-align: left;
+    font-weight: 800;
+    font-style: italic;
+}
+
+/* FOOTER */
+footer {
+    width: 100%;
+    background: var(--text);
+    color: var(--white);
+    padding: 80px 20px;
+    text-align: center;
 }
