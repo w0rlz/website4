@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Gallery</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visuals | Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Photography</h1>
+        <h1>The Collection</h1>
         <nav>
             <a href="index.html">Home</a>
             <a href="baseball.html">Baseball</a>
@@ -15,14 +17,16 @@
             <a href="contact.html">Contact</a>
         </nav>
     </header>
+
     <div class="container">
-        <div id="gallery" class="gallery"></div>
+        <div id="gallery" class="gallery">
+            </div>
     </div>
 
     <script>
         const username = 'w0rlz'; 
         const repo = 'website4';
-        const folder = 'misc'; // Change to 'aviation' or 'misc' for those pages
+        const folder = 'misc'; // Change this per page
 
         async function loadGallery() {
             const gallery = document.getElementById('gallery');
@@ -30,34 +34,41 @@
                 const response = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/images/${folder}`);
                 const files = await response.json();
 
-                const images = files.filter(f => f.name.match(/\.(jpg|jpeg|png|webp)$/i));
+                const images = files.filter(f => f.name.match(/\.(jpg|jpeg|png|webp|JPG)$/i));
                 const dataFiles = files.filter(f => f.name.endsWith('.md'));
 
                 for (const imgFile of images) {
                     const card = document.createElement('div');
                     card.className = 'photo-card';
 
-                    const img = document.createElement('img');
-                    img.src = imgFile.download_url;
-                    card.appendChild(img);
-
+                    // Find matching metadata
                     const baseName = imgFile.name.split('.')[0];
                     const match = dataFiles.find(d => d.name.includes(baseName));
+
+                    let date = "RECENT";
+                    let caption = "Untitled Work";
 
                     if (match) {
                         const infoResp = await fetch(match.download_url);
                         const text = await infoResp.text();
-                        const date = text.match(/date: (.*)/)?.[1]?.replace(/"/g, '') || "";
-                        const caption = text.match(/caption: (.*)/)?.[1]?.replace(/"/g, '') || "";
-
-                        const info = document.createElement('div');
-                        info.className = 'photo-info';
-                        info.innerHTML = `<strong>${date}</strong><p>${caption}</p>`;
-                        card.appendChild(info);
+                        date = text.match(/date: (.*)/)?.[1]?.replace(/"/g, '') || date;
+                        caption = text.match(/caption: (.*)/)?.[1]?.replace(/"/g, '') || caption;
                     }
+
+                    card.innerHTML = `
+                        <img src="${imgFile.download_url}" loading="lazy">
+                        <div class="photo-info">
+                            <strong>${date}</strong>
+                            <p>${caption}</p>
+                        </div>
+                    `;
+                    
                     gallery.appendChild(card);
+                    
+                    // Trigger fade-in animation
+                    setTimeout(() => card.classList.add('visible'), 100);
                 }
-            } catch (e) { console.log("Waiting for uploads..."); }
+            } catch (e) { console.log("Site is updating..."); }
         }
         loadGallery();
     </script>
