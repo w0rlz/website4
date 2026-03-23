@@ -1,119 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Outfit:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Plus+Jakarta+Sans:wght@400;600&display=swap');
 
 :root {
-    --bg: #0d1117;
-    --card-bg: #161b22;
-    --accent: #00ffaa;
-    --text-main: #f0e6d2; /* Champagne - much softer than pure white */
-    --text-dim: #8b949e;
+    --bg: #ffffff;
+    --card-bg: #f9f9fb;
+    --accent-1: #2563eb; /* Electric Blue */
+    --accent-2: #f97316; /* Vibrant Orange */
+    --text: #1a1a1a;
+    --border: #e2e8f0;
 }
 
 body { 
-    font-family: 'Outfit', sans-serif; 
+    font-family: 'Plus Jakarta Sans', sans-serif; 
     margin: 0; 
     background-color: var(--bg); 
-    color: var(--text-main);
-    line-height: 1.6;
+    color: var(--text);
 }
 
-/* Professional Navigation Bar */
+/* Fun, Bright Navigation */
 nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(13, 17, 23, 0.8);
-    backdrop-filter: blur(15px);
-    padding: 20px;
+    padding: 25px;
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    gap: 30px;
+    background: white;
+    border-bottom: 2px solid var(--text); /* Chunky handmade look */
 }
 
 nav a {
-    color: var(--text-dim);
+    color: var(--text);
     text-decoration: none;
-    margin: 0 20px;
+    font-weight: 700;
     font-size: 0.9rem;
-    letter-spacing: 1px;
-    transition: 0.3s;
+    text-transform: uppercase;
+    transition: 0.2s;
 }
 
-nav a:hover { color: var(--accent); }
+nav a:hover { color: var(--accent-1); border-bottom: 3px solid var(--accent-2); }
 
-/* Hero Section */
+/* The Hero: Fun & Explosive */
 .hero {
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 120px 20px;
     text-align: center;
-    background: radial-gradient(circle at top, #1c2128, #0d1117);
+    background: linear-gradient(135deg, #f0f9ff 0%, #fff7ed 100%);
+    border-bottom: 2px solid var(--text);
 }
 
 .hero h1 {
-    font-family: 'Syncopate', sans-serif;
-    font-size: clamp(3rem, 10vw, 8rem);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(4rem, 15vw, 10rem);
     margin: 0;
+    color: var(--text);
     line-height: 0.8;
-    color: var(--accent);
+    letter-spacing: -4px;
 }
 
-.hero p {
-    font-size: 1.2rem;
-    color: var(--text-dim);
-    margin-top: 20px;
-    letter-spacing: 5px;
-}
+.hero span { color: var(--accent-1); }
 
-/* Layout Sections */
-.section {
-    max-width: 1100px;
-    margin: 100px auto;
-    padding: 0 20px;
-}
+/* Sections */
+.section { max-width: 1300px; margin: 60px auto; padding: 0 20px; }
 
 .section-title {
-    font-family: 'Syncopate', sans-serif;
-    font-size: 0.7rem;
-    color: var(--accent);
-    letter-spacing: 4px;
-    margin-bottom: 40px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    display: inline-block;
+    background: var(--accent-2);
+    color: white;
+    padding: 5px 15px;
+    transform: rotate(-1deg); /* Handmade "sticker" feel */
 }
 
-/* Gallery Grid */
+/* The Gallery Grid */
 .gallery { 
     display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
-    gap: 30px; 
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+    gap: 40px; 
 }
 
+/* Card Style: Modern & Clean */
 .photo-card {
     background: var(--card-bg);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid var(--text);
+    border-radius: 0px; /* Sharp corners look more "custom/handmade" */
+    box-shadow: 8px 8px 0px var(--text); /* Retro pop shadow */
+    transition: 0.3s;
 }
 
 .photo-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0px var(--accent-1);
 }
 
 .photo-card img {
     width: 100%;
-    aspect-ratio: 1/1;
+    aspect-ratio: 4/5;
     object-fit: cover;
+    border-bottom: 2px solid var(--text);
 }
 
 .photo-info { padding: 20px; }
-.photo-info strong { color: var(--accent); font-size: 0.7rem; display: block; margin-bottom: 5px; }
-.photo-info p { margin: 0; font-size: 1rem; opacity: 0.9; }
-
-footer {
-    padding: 60px;
-    text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    color: var(--text-dim);
-    font-size: 0.8rem;
+.photo-info strong { 
+    color: var(--accent-1); 
+    font-size: 0.8rem; 
+    display: block; 
+    margin-bottom: 5px; 
 }
+
+.photo-info p { margin: 0; font-weight: 600; font-size: 1.2rem; }
+
+footer { padding: 40px; text-align: center; font-weight: 700; color: var(--text); }
