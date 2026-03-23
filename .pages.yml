@@ -1,0 +1,15 @@
+content:
+  - name: Baseball Gallery
+    type: collection
+    path: baseball.html
+    fields:
+      - name: photos
+        type: image
+        list: true
+  - name: Aviation Gallery
+    type: collection
+    path: aviation.html
+    fields:
+      - name: photos
+        type: image
+        list: true
